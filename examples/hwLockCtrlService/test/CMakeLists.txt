@@ -14,6 +14,6 @@ set(TEST_SOURCES
 
 # this include expects TEST_SOURCES and TEST_APP_NAME to be
 # defined, and creates the cpputest based test executable target
-include(${CMS_TEST_SUPPORT_TOP_DIR}/common/cpputestCMake.txt)
+include(${CMS_CMAKE_DIR}/cpputestCMake.cmake)
 
-target_link_libraries(${TEST_APP_NAME} cpputest-qpc-lib ${CPPUTEST_LDFLAGS})
+target_link_libraries(${TEST_APP_NAME} cpputest-for-qpc-lib ${CPPUTEST_LDFLAGS})
