@@ -411,17 +411,8 @@ TEST(HwLockCtrlServiceTests, the_service_responds_to_a_ping_with_a_pong)
 
     // this test demonstrates testing an AO that must respond directly
     // to an event with a POST directly to an external requesting AO.
-
-    PongEvent pongEvent;
-    QEvt_ctor(&pongEvent.super, 0);
-
     auto dummy = std::unique_ptr<cms::DefaultDummyActiveObject>(
-      new cms::DefaultDummyActiveObject());
-    dummy->SetPostedEventHandler([&pongEvent](const QEvt* event) {
-        auto p              = reinterpret_cast<const PongEvent *>(event);
-        pongEvent.super.sig = p->super.sig;
-        pongEvent.source    = p->source;
-    });
+      new cms::DefaultDummyActiveObject(cms::DefaultDummyActiveObject::EventBehavior::RECORDER));
 
     // Reminder: QF requires that each AO be at a unique priority level
     // hence the '- 1' below.
@@ -439,6 +430,8 @@ TEST(HwLockCtrlServiceTests, the_service_responds_to_a_ping_with_a_pong)
 
     // confirm that our dummy received a Pong with expected
     // data.
-    CHECK_EQUAL(RESPONSE_SIG, pongEvent.super.sig);
-    CHECK_EQUAL(mUnderTest, pongEvent.source);
+    auto recordedEvent = dummy->getRecordedEvent();
+    CHECK_EQUAL(RESPONSE_SIG, recordedEvent->sig);
+    auto pongEvent = (const PongEvent *)(recordedEvent.get());
+    CHECK_EQUAL(mUnderTest, pongEvent->source);
 }
