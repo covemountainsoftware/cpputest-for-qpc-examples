@@ -32,7 +32,7 @@
 #include "cmsTestPublishedEventRecorder.hpp"
 #include "hwLockCtrlSelfTestEvent.h"
 #include "bspTicks.h"
-#include "qassertMockSupport.hpp"
+#include "cmsQAssertMockSupport.hpp"
 #include "pingPongEvents.h"
 #include "cmsDummyActiveObject.hpp"
 
@@ -411,8 +411,8 @@ TEST(HwLockCtrlServiceTests, the_service_responds_to_a_ping_with_a_pong)
 
     // this test demonstrates testing an AO that must respond directly
     // to an event with a POST directly to an external requesting AO.
-    auto dummy = std::unique_ptr<cms::DefaultDummyActiveObject>(
-      new cms::DefaultDummyActiveObject(cms::DefaultDummyActiveObject::EventBehavior::RECORDER));
+    auto dummy = std::unique_ptr<DefaultDummyActiveObject>(
+      new DefaultDummyActiveObject(DefaultDummyActiveObject::EventBehavior::RECORDER));
 
     // Reminder: QF requires that each AO be at a unique priority level
     // hence the '- 1' below.
