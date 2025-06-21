@@ -3,7 +3,7 @@
 Build and Test status: ![Build and Tests](https://github.com/covemountainsoftware/cpputest-for-qpc/actions/workflows/cmake.yml/badge.svg)
 
 Copyright Matthew Eshleman
-
+****
 If this project inspires your team to select the QP/C (qpc) 
 framework for commercial use, please note 
 "Matthew Eshleman" or "Cove Mountain Software" in the referral 
@@ -20,9 +20,9 @@ For more details, please see https://github.com/covemountainsoftware/cpputest-fo
 
 # Environment
 
-This project was developed and proven in Ubuntu 20.04 and 22.04. In theory any 
-build or host operating system environment supported by CppUTest will 
-be compatible with this code.
+This project was developed and proven in Ubuntu, currently 24.04. 
+In theory any build or host operating system environment supported 
+by CppUTest will be compatible with this code.
 
 ## Prerequisites
 * CMake and associated build tools were used to develop
@@ -32,8 +32,8 @@ be compatible with this code.
   * After cloning this repository, do not forget to:
   * `git submodule init`
   * `git submodule update` 
-* CppUTest (version 3.8-7 or version 4.0) (3.8 is the default in Ubuntu 20.04 while 4.0 is the default in Ubuntu 22.04)
-* This project requires support for C++14 and C11.
+* CppUTest version 4.0
+* This project requires support for C++17 and C11.
 
 ## Continuous Integration
 
