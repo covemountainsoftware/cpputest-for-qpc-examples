@@ -39,6 +39,7 @@
 // the cpputest headers must always be last
 #include "CppUTest/TestHarness.h"
 #include "CppUTestExt/MockSupport.h"
+#include "cms_qevt_initializer.hpp"
 
 Q_DEFINE_THIS_FILE
 
@@ -378,11 +379,7 @@ TEST(HwLockCtrlServiceTests,
 {
     using namespace cms::test;
 
-    static const QEvt assertCausingEvent {
-      HW_LOCK_CTRL_DEMONSTRATE_TEST_OF_QASSERT_SIG,
-      0,
-      0
-    };
+    static const QEvt assertCausingEvent CMS_QEVT_INITIALIZER(HW_LOCK_CTRL_DEMONSTRATE_TEST_OF_QASSERT_SIG);
 
     startServiceToLocked();
 
